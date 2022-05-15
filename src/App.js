@@ -1,23 +1,79 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../src/_assets/stylesheets/style.css';
+import '../src/_assets/stylesheets/bootstrap.min.css';
+import '../src/_assets/stylesheets/responsive.css';
+import Header from './components/Header/Header';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './components/Home/Home';
+import Footer from './components/Footer/Footer';
+import Shop from './components/Shop/Shop';
+import SingleProduct from './components/Shop/SingleProduct';
+import Dashboard from './components/Admin/Dashboard';
+import AddProducts from './components/Admin/AddProducts';
+import AllProducts from './components/Admin/AllProducts';
+import 'font-awesome/css/font-awesome.min.css'
+import AllCategory from './components/Admin/AllCategory';
+import AddCategory from './components/Admin/AddCategory';
+import AllTags from './components/Admin/AllTags';
+import AddTags from './components/Admin/AddTags';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 
 function App() {
+
+  // Generate Slug
+  const generateSlug = (name) => {
+
+      let datasplit = name.split(' ')
+
+      return datasplit.join('-').toLowerCase()
+
+  }
+ 
+  // all Products
+  const [product, setProduct] = useState('')
+  const [cat, setCat] = useState('')
+  const [tag, setTag] = useState('')
+  
+  useEffect( () => {
+    axios.get(`http://localhost:5050/product`).then(res => {
+      setProduct(res.data)
+    })
+  })
+  useEffect( () => {
+    axios.get(`http://localhost:5050/category`).then(res => {
+      setCat(res.data)
+    })
+  })
+  useEffect( () => {
+    axios.get(`http://localhost:5050/tag`).then(res => {
+      setTag(res.data)
+    })
+  })
+
+   // Show Categgory Name
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+          <Header />
+            <Routes>
+              <Route exect path='/' element={<Home product={product}/>}/>
+              <Route path='/shop' element={<Shop product={product}  cat={cat} tag={tag}/>}/>
+              <Route path='/:productname' element={<SingleProduct/>}/>
+              <Route path='/dash' element={<Dashboard/>}>
+                  <Route path='/dash/allproduct' element={<AllProducts product={product} />}/>
+                  <Route path='/dash/addproduct' element={<AddProducts cat={cat} tag={tag}/>}/>
+                  <Route path='/dash/allcategory' element={<AllCategory/>}/>
+                  <Route path='/dash/addcategory' element={<AddCategory generateSlug={generateSlug}/>}/>
+                  <Route path='/dash/alltag' element={<AllTags/>}/>
+                  <Route path='/dash/addtag' element={<AddTags />}/>
+              </Route>
+            </Routes>
+          <Footer />
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,0 +1,147 @@
+{
+  "product": [
+    {
+      "name": "Warch 42 mm Smart Watches",
+      "regular_price": "12000",
+      "sale_price": "11000",
+      "rating": "5",
+      "description": "Vivamus in tempor eros. Phasellus rhoncus in nunc\nsit amet mattis. Integer in ipsum vestibulum,\nmolestie arcu ac, efficitur tellus. Phasellus id\nvulputate erat.",
+      "categoryId": "5",
+      "tagId": "",
+      "photo": "https://creativelayers.net/themes/techno-html/images/product/other/06.jpg",
+      "id": 1
+    },
+    {
+      "name": "Apple İmac Z0SC4824 Retina",
+      "regular_price": "12000",
+      "sale_price": "11000",
+      "rating": "5",
+      "description": "Vivamus in tempor eros. Phasellus rhoncus in nunc\nsit amet mattis. Integer in ipsum vestibulum,\nmolestie arcu ac, efficitur tellus. Phasellus id\nvulputate erat.",
+      "categoryId": "1",
+      "tagId": "",
+      "photo": "https://creativelayers.net/themes/techno-html/images/product/other/05.jpg",
+      "id": 2
+    },
+    {
+      "name": "Apple iPad Air 2 32GB 9.7 Tablet",
+      "regular_price": "12000",
+      "sale_price": "11000",
+      "rating": "5",
+      "description": "Vivamus in tempor eros. Phasellus rhoncus in nunc\nsit amet mattis. Integer in ipsum vestibulum,\nmolestie arcu ac, efficitur tellus. Phasellus id\nvulputate erat.",
+      "categoryId": "2",
+      "tagId": "",
+      "photo": "https://creativelayers.net/themes/techno-html/images/product/other/05.jpg",
+      "id": 3
+    },
+    {
+      "name": "New X5C-1 2.4Ghz Gyro RC Quadcopter Drone",
+      "regular_price": "12000",
+      "sale_price": "11000",
+      "rating": "5",
+      "description": "Vivamus in tempor eros. Phasellus rhoncus in nunc\nsit amet mattis. Integer in ipsum vestibulum,\nmolestie arcu ac, efficitur tellus. Phasellus id\nvulputate erat.",
+      "categoryId": "1",
+      "tagId": "",
+      "photo": "https://creativelayers.net/themes/techno-html/images/product/other/06.jpg",
+      "id": 4
+    },
+    {
+      "name": "Apple iPad Mini G2356",
+      "regular_price": "12000",
+      "sale_price": "11000",
+      "rating": "5",
+      "description": "Vivamus in tempor eros. Phasellus rhoncus in nunc\nsit amet mattis. Integer in ipsum vestibulum,\nmolestie arcu ac, efficitur tellus. Phasellus id\nvulputate erat.",
+      "categoryId": "3",
+      "tagId": "",
+      "photo": "https://creativelayers.net/themes/techno-html/images/product/other/l02.jpg",
+      "id": 5
+    },
+    {
+      "name": "Apple İmac Z0SC4824 Retina",
+      "regular_price": "15000",
+      "sale_price": "13000",
+      "rating": "2",
+      "description": "What does Lorem ipsum dolor sit amet consectetuer adipiscing elit sed diam nonummy nibh euismod tincidunt ut laoreet dolore mean?",
+      "categoryId": "2",
+      "tagId": "",
+      "photo": "https://creativelayers.net/themes/techno-html/images/product/other/l02.jpg",
+      "id": 6
+    },
+    {
+      "name": "Creative Fashion Ribbon Digital Watch",
+      "regular_price": "500",
+      "sale_price": "400",
+      "rating": "5",
+      "description": " Soft, light and elastic, pleasant to the skin\n- The strap has no clasp, easy to put on or take off\n- Washable\nThe Opportunity of using this watch\nWhen you come out, clean your hands, leaving the rubber anywhere on your hand",
+      "categoryId": "3",
+      "tagId": "",
+      "photo": "https://static-01.daraz.com.bd/p/30bfd02b9ce4ca8858a1d61e1b5a274e.jpg",
+      "id": 7
+    },
+    {
+      "name": "Jpn Blue Cotton polo shirt",
+      "regular_price": "200",
+      "sale_price": "150",
+      "rating": "5",
+      "description": "Product Type:Polo-Shirt\nMain Material: Cotton\nStylish and Polo\nComfortable\nSmart look\nGSM 190-200\nMade in Bangladesh\nA perfect casual wear",
+      "categoryId": "",
+      "tagId": "",
+      "photo": "https://static-01.daraz.com.bd/p/2c672156afaabb609e67af22d2f36736.jpg",
+      "id": 8
+    }
+  ],
+  "category": [
+    {
+      "name": "Ladies Pants",
+      "slug": "ladies-pants",
+      "id": 1
+    },
+    {
+      "name": "Home Devices",
+      "slug": "home-devices",
+      "id": 2
+    },
+    {
+      "name": "Mobile Phone",
+      "slug": "mobile-phone",
+      "id": 3
+    },
+    {
+      "name": "Air Conditioner",
+      "slug": "air-conditioner",
+      "id": 4
+    },
+    {
+      "name": "Television",
+      "slug": "television",
+      "id": 5
+    },
+    {
+      "name": "Home Devices",
+      "slug": "home-devices",
+      "id": 6
+    },
+    {
+      "name": "T shirt",
+      "slug": "t-shirt",
+      "id": 7
+    }
+  ],
+  "tag": [
+    {
+      "name": "Home Devices",
+      "id": 1
+    },
+    {
+      "name": "mobile",
+      "id": 2
+    },
+    {
+      "name": "Electronics",
+      "id": 3
+    },
+    {
+      "name": "Refrezarator",
+      "id": 4
+    }
+  ]
+}
