@@ -33,27 +33,43 @@ function App() {
   }
  
   // all Products
-  const [product, setProduct] = useState('')
-  const [cat, setCat] = useState('')
-  const [tag, setTag] = useState('')
+  const [product, setProduct] = useState([])
+  const [cat, setCat] = useState([])
+  const [tag, setTag] = useState([])
   
   useEffect( () => {
     axios.get(`http://localhost:5050/product`).then(res => {
       setProduct(res.data)
     })
-  })
+  },[])
   useEffect( () => {
     axios.get(`http://localhost:5050/category`).then(res => {
       setCat(res.data)
     })
-  })
+  },[cat])
   useEffect( () => {
     axios.get(`http://localhost:5050/tag`).then(res => {
       setTag(res.data)
     })
-  })
+  }, [tag])
 
    // Show Categgory Name
+
+   const catNmae = (id) => {
+    let c_name = "";
+    cat.map( data => {
+      if( data.id == id ){
+          c_name =  data.name
+      }
+  })     
+      if( c_name == ''){
+        return `Uncategorized`
+      }else{
+        return c_name;  
+      }
+}
+   
+
 
   return (
     <div className="App">
@@ -61,14 +77,14 @@ function App() {
           <Header />
             <Routes>
               <Route exect path='/' element={<Home product={product}/>}/>
-              <Route path='/shop' element={<Shop product={product}  cat={cat} tag={tag}/>}/>
-              <Route path='/:productname' element={<SingleProduct/>}/>
+              <Route path='/shop' element={<Shop tittle={'Shop'} product={product} setProduct={setProduct}   cat={cat} tag={tag}/>}/>
+              <Route path='/:name' element={<SingleProduct  catNmae={catNmae}/>}/>
               <Route path='/dash' element={<Dashboard/>}>
-                  <Route path='/dash/allproduct' element={<AllProducts product={product} />}/>
-                  <Route path='/dash/addproduct' element={<AddProducts cat={cat} tag={tag}/>}/>
-                  <Route path='/dash/allcategory' element={<AllCategory/>}/>
+                  <Route path='/dash/allproduct' element={<AllProducts product={product} catNmae={catNmae}/>}/>
+                  <Route path='/dash/addproduct' element={<AddProducts cat={cat} tag={tag} generateSlug={generateSlug}/>}/>
+                  <Route path='/dash/allcategory' element={<AllCategory cat={cat} setCat={setCat}/>}/>
                   <Route path='/dash/addcategory' element={<AddCategory generateSlug={generateSlug}/>}/>
-                  <Route path='/dash/alltag' element={<AllTags/>}/>
+                  <Route path='/dash/alltag' element={<AllTags tag={tag} setTag={setTag} />}/>
                   <Route path='/dash/addtag' element={<AddTags />}/>
               </Route>
             </Routes>

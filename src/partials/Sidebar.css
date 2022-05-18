@@ -16,3 +16,11 @@
     padding: 8px 15px;
     color: #2d2d2d;
 }
+.widget-content li a{
+    color: #2d2d2d;
+    text-decoration: none;
+}
+.widget-content li a:hover{
+    color: #cf7c08;
+    text-decoration: none;
+}

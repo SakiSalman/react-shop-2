@@ -357,7 +357,7 @@ const Header = () => {
 											<a  href="blog.html" title="">Blog</a>
 										</li>
 										<li class="column-1">
-											<a  href="contact.html" title="">Contact</a>
+											<Link to={'/dash/allproduct'} >Dashboard</Link>
 										</li>
 									</ul>
 								</div>

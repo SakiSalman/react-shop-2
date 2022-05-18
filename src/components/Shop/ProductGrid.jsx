@@ -1,13 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
-const ProductGrid = ({ name, sale_price, regular_price, photo }) => {
+const ProductGrid = ({ name, sale_price, regular_price, photo, id }) => {
 	
 	return (
 		<>
 			<div class="product-box">
 				<div class="imagebox">
-					<div className="p-image">
-						<img style={{width: '100%', height: '200px', objectFit : 'cover'}} src={photo} alt="" />
+					<div className="p-image" >
+					<Link to={`/${id}`} > 
+					<img style={{width: '100%', height: '150px !important', objectFit : 'cover'}} src={photo} alt="" />
+					</Link>
 
 					</div>
 					<div class="box-content">

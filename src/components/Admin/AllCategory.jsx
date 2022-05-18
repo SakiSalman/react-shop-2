@@ -1,7 +1,18 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-const AllCategory = () => {
+const AllCategory = ({cat, setCat}) => {
+
+
+    // Delate Category
+    const delatecat = (id) =>{
+
+    axios.delete(`http://localhost:5050/category/${id}`).then( res => {
+        setCat(res.data)
+
+    })
+}
   return (
     <div>
         <div className="row">
@@ -29,24 +40,21 @@ const AllCategory = () => {
                                     </tr>
                             </thead>
                             <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Watches</td>
-                                        <td >watch</td>
+
+                                {
+                                    cat.map((data, index)=> 
+                                        <tr>
+                                        <td>{index + 1}</td>
+                                        <td>{data.name}</td>
+                                        <td >{data.slug}</td>
                                         <td>
-                                            <a className='btn btn-sm btn-warning' href="#"><i class="fas fa-edit    "></i></a>
-                                            <a className='btn btn-sm btn-danger' href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            <button className='btn btn-sm btn-danger' onClick={(e) => delatecat(data.id)}><i class="fa fa-trash" aria-hidden="true"></i></button>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Watches</td>
-                                        <td >watch</td>
-                                        <td>
-                                            <a className='btn btn-sm btn-warning' href="#"><i class="fas fa-edit    "></i></a>
-                                            <a className='btn btn-sm btn-danger' href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                        </td>
-                                    </tr>
+                                        
+                                        )
+                                }
+
                             </tbody>
                         </table>
                     </div>

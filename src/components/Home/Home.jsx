@@ -3,7 +3,6 @@ import ProductGrid from "../Shop/ProductGrid";
 import "./Home.css";
 
 const Home = ({ product }) => {
-  console.log(product);
   return (
     <div>
       {/* HOme Bannar */}
@@ -87,14 +86,14 @@ const Home = ({ product }) => {
           </div>
           <div className="box-product">
             <div className="row">
-            {product.map(data => 
+            {product[0] && product.map(data => 
                 
                 <div className="col-lg-3 col-sm-6">
                   <ProductGrid
                     name={data.name}
                     sale_price={data.sale_price}
                     regular_price={data.regular_price}
-                    photo={data.photo} />
+                    photo={data.photo} id={data.id} />
                 </div>
                 
                 )}

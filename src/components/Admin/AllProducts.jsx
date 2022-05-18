@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const AllProducts = ({product}) => {
+const AllProducts = ({product, catNmae}) => {
 
 
   return (
@@ -26,7 +26,7 @@ const AllProducts = ({product}) => {
                                     <tr>
                                         <th>#</th>
                                         <th scope="col">Name</th>
-                                        <th>category</th>
+                                        <th>Category</th>
                                         <th>S. price</th>
                                         <th>R. Price</th>
                                         <th>photo</th>
@@ -36,13 +36,13 @@ const AllProducts = ({product}) => {
                             <tbody>
 
                                 {
-                                    product.map( (data, index) =>
-                                    
+                                    product[0] && product.map( (data, index) =>
+
+
                                     <tr>
                                         <td>{index + 1}</td>
                                         <td>{data.name}</td>
-                                        <td >All
-                                            </td>
+                                        <td>{catNmae(data.categoryId)}</td>
                                         <td >$1,999.00</td>
                                         <td >$2,999.00</td>
                                         <td>
@@ -54,6 +54,10 @@ const AllProducts = ({product}) => {
                                             <a className='btn btn-sm btn-danger' href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
+                                    
+
+
+                                    
                                     
                                     )
                                 }

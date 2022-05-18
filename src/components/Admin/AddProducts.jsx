@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap'
 
-const AddProducts = ({cat, tag}) => {
+const AddProducts = ({cat, tag, generateSlug}) => {
 
     // form input value
     const [input, setInput] = useState({
@@ -22,6 +22,7 @@ const AddProducts = ({cat, tag}) => {
         e.preventDefault()
         axios.post(`http://localhost:5050/product`, {
             name : input.name,
+            slug : generateSlug(input.name),
             regular_price : input.regular_price,
             sale_price : input.sale_price,
             rating : input.rating,
@@ -80,10 +81,10 @@ const AddProducts = ({cat, tag}) => {
 					<select style={{border : '1px solid #ccc'}} value={input.categoryId} onChange={ (e) => setInput({...input, categoryId: e.target.value})}>
                         <option value="">-selcet category-</option>
                         {
-                            cat.map( data => 
-                                <option value={data.id}>{data.name}</option>
+                           cat[0] && cat.map( data => 
+                            <option value={data.id}>{data.name}</option>
 
-                                )
+                            )
                         }
                     </select>
 				</div>
@@ -92,7 +93,7 @@ const AddProducts = ({cat, tag}) => {
 					<select style={{border : '1px solid #ccc'}} value={input.tagId} onChange={ (e) => setInput({...input, tagId: e.target.value})}>
                         <option value="">-selcet category-</option>
                         {
-                            tag.map( data => 
+                            tag[0] && tag.map( data => 
                                 <option value={data.id}>{data.name}</option>
 
                             )

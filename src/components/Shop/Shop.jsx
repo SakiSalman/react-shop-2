@@ -3,15 +3,15 @@ import Breacumb from '../../partials/Breacumb'
 import Sidebar from '../../partials/Sidebar'
 import ProductGrid from './ProductGrid'
 
-const Shop = ({product, cat, tag}) => {
+const Shop = ({product, setProduct, cat, tag, tittle}) => {
 
 	
 	return (
-    <div>
+    <>
         
 
         {/* Breadvumb */}
-        <Breacumb />
+        <Breacumb tittle={'Shop'}/>
         {/* Breadvumb end */}
         
         {/* Shop Start */}
@@ -21,7 +21,7 @@ const Shop = ({product, cat, tag}) => {
                     {/* Sidebar Start */}
 					<div class="col-lg-3 col-md-4">
 
-							<Sidebar cat={cat} tag={tag}/>
+							<Sidebar cat={cat} tag={tag} product={product} setProduct={setProduct}/>
 					
 					</div> 
                     {/* Sidebar End */}
@@ -88,15 +88,18 @@ const Shop = ({product, cat, tag}) => {
 
 								<div class="tab-product">
 									<div class="row sort-box">
-									{
-											product.map( data => 
-												<div class="col-lg-4 col-sm-6">
-														<ProductGrid  name={data.name} sale_price ={data.sale_price} regular_price={data.regular_price} photo={data.photo}/>
-													</div>
-												
-											
-											)
-									}
+									
+									{product[0] && product.map(data => 
+                
+										<div className="col-lg-4 col-sm-6">
+										<ProductGrid
+											name={data.name}
+											sale_price={data.sale_price}
+											regular_price={data.regular_price}
+											photo={data.photo} id={data.id} />
+										</div>
+										
+										)}
 										
 									</div>
 								</div>
@@ -139,7 +142,7 @@ const Shop = ({product, cat, tag}) => {
 			</div>
 		</main>
         {/* Shop End */}
-    </div>
+    </>
   )
 }
 

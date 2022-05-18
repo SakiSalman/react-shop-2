@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
-const Breacumb = () => {
+const Breacumb = ({tittle}) => {
   return (
     <div>
         
@@ -10,15 +11,11 @@ const Breacumb = () => {
 					<div class="col-md-12">
 						<ul class="breadcrumbs">
 							<li class="trail-item">
-								<a href="#" title="">Home</a>
-								<span><img src="images/icons/arrow-right.png" alt=""/></span>
-							</li>
-							<li class="trail-item">
-								<a href="#" title="">Shop</a>
+								<Link to={'/'} href="#" title="">Home</Link>
 								<span><img src="images/icons/arrow-right.png" alt=""/></span>
 							</li>
 							<li class="trail-end">
-								<a href="#" title="">Smartphones</a>
+								<a href="#" title="">{tittle}</a>
 							</li>
 						</ul>
 					</div>

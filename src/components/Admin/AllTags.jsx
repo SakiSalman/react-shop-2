@@ -1,7 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
-const AllTags = () => {
+
+const AllTags = ({tag }) => {
+
+    const handlerTags = (id) => {
+
+            axios.delete('http://localhost:5050/category/'+ {id})
+            
+    }
   return (
     <div>
         <div className="row">
@@ -28,22 +36,19 @@ const AllTags = () => {
                                     </tr>
                             </thead>
                             <tbody>
+                                {
+                                    tag.map( (data, index) => 
+                                    
                                     <tr>
-                                        <td>1</td>
-                                        <td>Watches</td>
-                                        <td>
-                                            <a className='btn btn-sm btn-warning' href="#"><i class="fas fa-edit    "></i></a>
-                                            <a className='btn btn-sm btn-danger' href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Watches</td>
-                                        <td>
-                                            <a className='btn btn-sm btn-warning' href="#"><i class="fas fa-edit    "></i></a>
-                                            <a className='btn btn-sm btn-danger' href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                        </td>
-                                    </tr>
+                                    <td>{index + 1}</td>
+                                    <td>{data.name}</td>
+                                    <td>
+                                        <button onClick={(e) => handlerTags(data.id) } className='btn btn-sm btn-danger'><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                    )
+                                }
+
                             </tbody>
                         </table>
                     </div>

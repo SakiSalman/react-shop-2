@@ -1,53 +1,59 @@
-import React from "react";
-import './Sidebar.css';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import "./Sidebar.css";
 
+const Sidebar = ({ cat, tag, product, setProduct }) => {
+  const [search, setSearch] = useState("");
 
-const Sidebar = ({cat, tag}) => {
+  useEffect(() => {
+    if (search !== "") {
+      axios.get(`http://localhost:5050/product?q=${search}`).then((res) => {
+        setProduct(res.data);
+      });
+    }
+  });
+  useEffect(() => {
+    if (search !== "") {
+      axios.get(`http://localhost:5050/product?q=${search}`).then((res) => {
+        setProduct(res.data);
+      });
+    }
+  });
+
+  // Serch By Category
+  const hadlerCategory = (e, id) => {
+    e.preventDefault();
+    setSearch("");
+    axios.get(`http://localhost:5050/category/${id}/product`).then((res) => {
+      setProduct(res.data);
+    });
+  };
+  // Serch By Category
+  const hadlerTag = (e, id) => {
+    e.preventDefault();
+    setSearch("");
+    axios.get(`http://localhost:5050/tag/${id}/product`).then((res) => {
+      setProduct(res.data);
+    });
+  };
   return (
     <div>
       <div class="sidebar ">
         <div class="widget widget-categories">
-          <div class="widget-title">
+          <div class="widget-title mb-4">
             <h3>
-              Categories<span></span>
+              Search Peoduct<span></span>
             </h3>
-          </div>
-          <ul class="cat-list style1 widget-content">
-            {
-              cat.map( data => 
-                
-                    <li>
-                  <span>
-                    {data.name}<i></i>
-                  </span>
-                </li>
-              
-                )
-            }
-            
-          </ul>
-        </div>
-        <div class="widget widget-brands">
-          <div class="widget-title">
-            <h3>
-              Popular Tags<span></span>
-            </h3>
-          </div>
-          <div class="widget-content">
-
-            <ul class="box-checkbox scroll">
-
-              {
-                tag.map( data => 
-                  <li class="check-box">
-                      <a href="">{data.name}</a>
-                  </li>
-                  
-                  )
-              }
-
-
-            </ul>
+            <div class="form-box">
+              <input
+                type="text"
+                id="item"
+                name="item"
+                placeholder="Search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
           </div>
         </div>
         <div class="widget widget-price">
@@ -79,7 +85,49 @@ const Sidebar = ({cat, tag}) => {
             </div>
           </div>
         </div>
-
+        <div class="widget widget-categories">
+          <div class="widget-title">
+            <h3>
+              Categories<span></span>
+            </h3>
+          </div>
+          <ul class="cat-list style1 widget-content">
+            {cat[0] &&
+              cat.map((data) => (
+                <li>
+                  <span>
+                    <a
+                      onClick={(e) => hadlerCategory(e, data.id)}
+                      href={data.id}
+                    >
+                      {" "}
+                      {data.name}
+                    </a>
+                    <i></i>
+                  </span>
+                </li>
+              ))}
+          </ul>
+        </div>
+        <div class="widget widget-brands">
+          <div class="widget-title">
+            <h3>
+              Popular Tags<span></span>
+            </h3>
+          </div>
+          <div class="widget-content">
+            <ul class="box-checkbox scroll">
+              {tag[0] &&
+                tag.map((data) => (
+                  <li class="check-box">
+                    <a onClick={(e) => hadlerTag(e, data.id)} href={data.id}>
+                      {data.name}
+                    </a>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );
